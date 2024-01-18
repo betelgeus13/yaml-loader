@@ -7,7 +7,7 @@ const makeIdIterator = (prefix = 'v', i = 1) => ({ next: () => prefix + i++ })
 module.exports = function yamlLoader(src) {
   const { asJSON, asStream, namespace, ...options } = Object.assign(
     { prettyErrors: true },
-    getOptions(this)
+    getOptions({ query: this.query || this.resourceQuery })
   )
 
   // keep track of repeated object references
